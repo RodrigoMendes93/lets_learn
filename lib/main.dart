@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Pagina1(title: ''),
+      home: LoginPage(),
     );
   }
 }
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Página de login"),
+        title: const Text("LOGIN"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
-                    hintText: 'Escreva um endereço de email valido. Exemplo: valido@usuario.com.br'),
+                    hintText: 'Exemplo: valido@usuario.com.br'),
               ),
             ),
             Padding(

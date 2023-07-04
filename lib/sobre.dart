@@ -18,10 +18,10 @@ class SobrePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
+      body: SingleChildScrollView(
+        child: Column(children: [
           Center(
-            child: Image.asset('images/logo.png'),
+            child: Image.asset('/images/sobre.png'),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 40),
@@ -65,6 +65,7 @@ class SobrePage extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }
