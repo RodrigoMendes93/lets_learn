@@ -21,7 +21,7 @@ class SobrePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(children: [
           Center(
-            child: Image.asset('/images/sobre.png'),
+            child: Image.asset('assets/images/sobre.png'),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 25, horizontal: 40),

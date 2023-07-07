@@ -38,7 +38,7 @@ class _ListaAtividadesState extends State<ListaAtividades> {
             leading: SizedBox.fromSize(
               size: const Size.fromRadius(20),
               child: Image.asset(
-                '/images/logo.png',
+                'assets/images/logo.png',
                 alignment: Alignment.centerLeft,
                 width: 100,
               ),

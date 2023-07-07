@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: SizedBox(
                     width: 200,
                     height: 200,
-                    child: Image.asset('images/logomenu.png')),
+                    child: Image.asset('assets/images/logomenu.png')),
               ),
             ),
             Padding(
