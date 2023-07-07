@@ -7,9 +7,9 @@ class SobrePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         title: const Align(
-          alignment: Alignment.centerLeft,
           child: Text(
             'SOBRE NÓS',
             style: TextStyle(
@@ -37,7 +37,7 @@ class SobrePage extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        'é uma gramática online para o estudante acessar de qualquer lugar em qualquer momento, eliminando as gramáticas velhas de papel e aliviando o peso da mochila através de um aplicativo modeno e intuitivo. O conhecimento do inglês a um clique de distância!\n',
+                      'é uma gramática online para o estudante acessar de qualquer lugar em qualquer momento, eliminando as gramáticas velhas de papel e aliviando o peso da mochila através de um aplicativo modeno e intuitivo. O conhecimento do inglês a um clique de distância!\n',
                   ),
                   TextSpan(
                     text: '\n\nNosso Objetivo\n\n',
@@ -47,7 +47,7 @@ class SobrePage extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        'Contribuir para o acesso ao conhecimento de maneira fácil e rápida para que os estudantes possam tirar suas dúvidas sobre a gramática do inglês de maneira simples e moderna.\n',
+                      'Contribuir para o acesso ao conhecimento de maneira fácil e rápida para que os estudantes possam tirar suas dúvidas sobre a gramática do inglês de maneira prática.\n',
                   ),
                   TextSpan(
                     text: '\n\nNossa Visão\n\n',
@@ -57,7 +57,7 @@ class SobrePage extends StatelessWidget {
                   ),
                   TextSpan(
                     text:
-                        'Acreditamos que o aprendizado pertence a todos e que aprendar uma nova língua abre portas para novos mundos, portanto não deveriam haver barreiras para aprender o inglês.\n',
+                      'Acreditamos que o aprendizado pertence a todos e que aprender uma nova língua abre portas para novos mundos, portanto não deveriam haver barreiras para aprender o inglês.\n',
                   ),
                 ],
               ),

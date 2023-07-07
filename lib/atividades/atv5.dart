@@ -7,9 +7,9 @@ class AtvPage5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         title: const Align(
-          alignment: Alignment.center,
           child: Text(
             "ARTIGOS",
             style: TextStyle(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/atv1.dart';
 import 'package:flutter_application_1/lista.dart';
+import 'package:flutter_application_1/routes/routes_generator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AtvPage(),
+      home: LoginPage(),
+      initialRoute: RoutesGenerator.homePage,
+      onGenerateRoute: RoutesGenerator.generate,
     );
   }
 }
@@ -39,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("LOGIN"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +71,6 @@ class _LoginPageState extends State<LoginPage> {
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-
                 obscureText: true,
                 controller: _campoSenhaControlador,
                 decoration: const InputDecoration(
@@ -80,26 +82,35 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
               child: TextButton(
-                onPressed: () { 
+                onPressed: () {
                   //função
                 },
                 child: Container(
                   height: 50,
                   width: 250,
                   decoration: BoxDecoration(
-                      color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
-                    onPressed: (){
-                        String campoEmailValor =_campoEmailControlador.text;
-                        String campoSenhaValor = _campoSenhaControlador.text;
+                    onPressed: () {
+                      String campoEmailValor = _campoEmailControlador.text;
+                      String campoSenhaValor = _campoSenhaControlador.text;
 
-                        if(campoEmailValor == 'valido@usuario.com.br' && campoSenhaValor == '123456@'){
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => (const Pagina1(title: 'Lista de gifs',))));
-                        }else{
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => (const LoginPage())));
-                        }
-                                        
-                      },
+                      if (campoEmailValor == 'valido@usuario.com.br' &&
+                          campoSenhaValor == '123456@') {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => (const ListaAtividades(
+                                      title: 'Lista de Atividades',
+                                    ))));
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => (const LoginPage())));
+                      }
+                    },
                     child: const Text(
                       'Login',
                       style: TextStyle(color: Colors.white, fontSize: 25),
@@ -111,14 +122,14 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
               child: TextButton(
-              onPressed: (){
-                //Esqueci a senha quando pressionado!
-              },
-              child: const Text(
-                'Esqueci a senha',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+                onPressed: () {
+                  //Esqueci a senha quando pressionado!
+                },
+                child: const Text(
+                  'Esqueci a senha',
+                  style: TextStyle(color: Colors.blue, fontSize: 15),
+                ),
               ),
-            ),
             ),
             const SizedBox(
               height: 130,

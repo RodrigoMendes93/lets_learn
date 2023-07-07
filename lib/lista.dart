@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/sobre.dart';
 
-class Pagina1 extends StatefulWidget {
-  const Pagina1({super.key, required String title}) : _title = title;
+class ListaAtividades extends StatefulWidget {
+  const ListaAtividades({super.key, required String title}) : _title = title;
 
   final String _title;
   get name => _title;
 
   @override
-  State<Pagina1> createState() => _Pagina1State();
+  State<ListaAtividades> createState() => _ListaAtividadesState();
 }
 
-class _Pagina1State extends State<Pagina1> {
+class _ListaAtividadesState extends State<ListaAtividades> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +43,21 @@ class _Pagina1State extends State<Pagina1> {
                 width: 100,
               ),
             ),
-            title: Text('Atividade ${index + 1}'),
-            subtitle: Text('Atividade para estudantes do nível ${index + 1}'),
+            title: TextButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed('/atividades/atv${index + 1}');
+                },
+                style: TextButton.styleFrom(
+                foregroundColor: Colors.black,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Atividade ${index + 1}'),
+                  ),
+                ),
+            subtitle:
+                Text('  Clique no título para ver a Atividade ${index + 1}'),
             dense: false,
           );
         },
