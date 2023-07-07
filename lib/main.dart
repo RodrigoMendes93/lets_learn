@@ -98,12 +98,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       if (campoEmailValor == 'valido@usuario.com.br' &&
                           campoSenhaValor == '123456@') {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => (const ListaAtividades(
-                                      title: 'Lista de Atividades',
-                                    ))));
+                        Navigator.of(context).pushNamed('/lista');
                       } else {
                         Navigator.push(
                             context,

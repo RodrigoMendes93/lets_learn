@@ -1,8 +1,41 @@
 import "package:flutter/material.dart";
 
-class AtvPage10 extends StatelessWidget {
-  const AtvPage10 ({super.key});
+import "../datasource/sharedPreferences.dart";
+import "../models/atividades.dart";
 
+class AtvPage10 extends StatelessWidget {
+  AtvPage10 ({super.key});
+
+  final List<TextEditingController> _campoResposta = [
+     for (int i = 1; i < 4; i++)
+    TextEditingController()
+  ];
+
+
+  Future<void> confirmar() async{
+      List<String> res = [];
+      for (int i = 0; i<_campoResposta.length; i++){
+        res.add(_campoResposta[i].text);
+      }
+
+      var instancia = RespostasSharedPreferencesDatasource();
+      var caso = Respostas(idAtividade: 10, resposta: res);
+      var mm = await instancia.getAll();
+      if(mm.isNotEmpty){
+        bool test = [(mm.where((e) => e.idAtividade == 10))].isNotEmpty ? true : false;
+        if (test){
+          instancia.update(caso);
+        }else{
+          instancia.insert(caso);
+        }
+        for(int i = 0 ; i < mm.length ; i++){
+          print(mm[i].toJson());
+        }
+      }else{
+        instancia.insert(caso);
+      }
+  } 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,20 +138,22 @@ class AtvPage10 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("He "),
+                        children: [                            
+                          const Text("He "),
                           SizedBox(
                             width: 115,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO LEARN",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" English at school"),
+                          const Text(" English at school"),
                         ],
                       ),
                     ],
@@ -128,20 +163,22 @@ class AtvPage10 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children:const [
-                          Text("We "),
+                        children:[                            
+                          const Text("We "),
                           SizedBox(
                             width: 105,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO DRINK",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" soda at the party last weekend"),
+                          const Text(" soda at the party last weekend"),
                         ],
                       ),
                     ],
@@ -151,23 +188,38 @@ class AtvPage10 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("You "),
+                        children: [                            
+                          const Text("You "),
                           SizedBox(
                             width: 165,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO UNDERSTAND",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" the teacher"),
+                          const Text(" the teacher"),
                         ],
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: (){
+                          confirmar();
+                          Navigator.of(context).pushNamed('/lista');
+                        }, 
+                        child: const Text('Confirmar'),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,8 +1,44 @@
 import "package:flutter/material.dart";
 
-class AtvPage5 extends StatelessWidget {
-  const AtvPage5 ({super.key});
+import "../datasource/sharedPreferences.dart";
+import "../models/atividades.dart";
 
+class AtvPage5 extends StatelessWidget {
+  AtvPage5 ({super.key});
+
+  final List<TextEditingController> _campoResposta = [
+     for (int i = 1; i < 4; i++)
+    TextEditingController()
+  ];
+
+
+  Future<void> confirmar() async{
+      List<String> res = [];
+      for (int i = 0; i<_campoResposta.length; i++){
+        res.add(_campoResposta[i].text);
+      }
+
+      var instancia = RespostasSharedPreferencesDatasource();
+      var caso = Respostas(idAtividade: 5, resposta: res);
+      var mm = await instancia.getAll();
+      if(mm.isNotEmpty){
+        bool test = [(mm.where((e) => e.idAtividade == 5))].isNotEmpty ? true : false;
+        if (test){
+          print('b');
+          instancia.update(caso);
+        }else{
+          print('a');
+          instancia.insert(caso);
+        }
+        for(int i = 0 ; i < mm.length ; i++){
+          print(mm[i].toJson());
+        }
+      }else{
+        print('c');
+        instancia.insert(caso);
+      }
+  } 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,11 +141,13 @@ class AtvPage5 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
+                        children: [                            
                           Text("Monica lives in "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -127,11 +165,13 @@ class AtvPage5 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
+                        children: [                            
                           Text("Steve is "),
                           SizedBox(
                             width: 115,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -149,11 +189,13 @@ class AtvPage5 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
+                        children: [                            
                           Text("I need to buy "),
                           SizedBox(
                             width: 100,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -165,6 +207,19 @@ class AtvPage5 extends StatelessWidget {
                         ],
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: (){
+                          confirmar();
+                          Navigator.of(context).pushNamed('/lista');
+                        }, 
+                        child: const Text('Confirmar'),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,8 +1,44 @@
 import "package:flutter/material.dart";
+import "package:flutter_application_1/lista.dart";
+
+import "../datasource/sharedPreferences.dart";
+import "../models/atividades.dart";
 
 class AtvPage1 extends StatelessWidget {
-  const AtvPage1 ({super.key});
+  AtvPage1 ({super.key});
+  final List<TextEditingController> _campoResposta = [
+     for (int i = 1; i < 4; i++)
+    TextEditingController()
+  ];
 
+
+  Future<void> confirmar() async{
+      List<String> res = [];
+      for (int i = 0; i<_campoResposta.length; i++){
+        res.add(_campoResposta[i].text);
+      }
+
+      var instancia = RespostasSharedPreferencesDatasource();
+      var caso = Respostas(idAtividade: 1, resposta: res);
+      var mm = await instancia.getAll();
+      if(mm.isNotEmpty){
+        bool test = [(mm.where((e) => e.idAtividade == 1))].isNotEmpty ? true : false;
+        if (test){
+          print('b');
+          instancia.update(caso);
+        }else{
+          print('a');
+          instancia.insert(caso);
+        }
+        for(int i = 0 ; i < mm.length ; i++){
+          print(mm[i].toJson());
+        }
+      }else{
+        print('c');
+        instancia.insert(caso);
+      }
+
+  } 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,19 +179,20 @@ class AtvPage1 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("I "),
+                        children: [
+                          const Text("I "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[0],
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
-                            ),
-                          Text(" tired"),
+                          ),
+                          const Text(" tired"),
                         ],
                       ),
                     ],
@@ -165,19 +202,20 @@ class AtvPage1 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("You "),
+                        children: [
+                          const Text("You "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[1],
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" an old person"),
+                          const Text(" an old person"),
                         ],
                       ),
                     ],
@@ -187,19 +225,20 @@ class AtvPage1 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("He "),
+                        children: [
+                          const Text("He "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[2],
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" Brazilian"),
+                          const Text(" Brazilian"),
                         ],
                       ),
                     ],
@@ -209,22 +248,36 @@ class AtvPage1 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("She "),
+                        children: [
+                          const Text("She "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[2],
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" Rich"),
+                          const Text(" Rich"),
                         ],
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: (){
+                          confirmar();
+                          Navigator.of(context).pushNamed('/lista');
+                        }, 
+                        child: const Text('Confirmar'),
+                      ),
+                    ),
                   ),
                 ],
               ),

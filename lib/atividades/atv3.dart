@@ -1,7 +1,43 @@
 import "package:flutter/material.dart";
 
+import "../datasource/sharedPreferences.dart";
+import "../models/atividades.dart";
+
 class AtvPage3 extends StatelessWidget {
-  const AtvPage3 ({super.key});
+  AtvPage3 ({super.key});
+
+  final List<TextEditingController> _campoResposta = [
+     for (int i = 1; i < 4; i++)
+    TextEditingController()
+  ];
+
+
+  Future<void> confirmar() async{
+      List<String> res = [];
+      for (int i = 0; i<_campoResposta.length; i++){
+        res.add(_campoResposta[i].text);
+      }
+
+      var instancia = RespostasSharedPreferencesDatasource();
+      var caso = Respostas(idAtividade: 3, resposta: res);
+      var mm = await instancia.getAll();
+      if(mm.isNotEmpty){
+        bool test = [(mm.where((e) => e.idAtividade == 3))].isNotEmpty ? true : false;
+        if (test){
+          print('b');
+          instancia.update(caso);
+        }else{
+          print('a');
+          instancia.insert(caso);
+        }
+        for(int i = 0 ; i < mm.length ; i++){
+          print(mm[i].toJson());
+        }
+      }else{
+        print('c');
+        instancia.insert(caso);
+      }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -113,20 +149,22 @@ class AtvPage3 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("I "),
+                        children: [
+                          const Text("I "),
                           SizedBox(
                             width: 80,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO EAT",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" rice and beans for lunch"),
+                          const Text(" rice and beans for lunch"),
                         ],
                       ),
                     ],
@@ -136,20 +174,22 @@ class AtvPage3 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("You "),
+                        children: [
+                          const Text("You "),
                           SizedBox(
                             width: 115,
                             child: TextField(
+                              controller: _campoResposta[1],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO PREFER",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" to drink sparkling water"),
+                          const Text(" to drink sparkling water"),
                         ],
                       ),
                     ],
@@ -159,20 +199,22 @@ class AtvPage3 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("We "),
+                        children: [
+                          const Text("We "),
                           SizedBox(
                             width: 100,
                             child: TextField(
+                              controller: _campoResposta[2],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO DRINK",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" orange juice for breakfast"),
+                          const Text(" orange juice for breakfast"),
                         ],
                       ),
                     ],
@@ -182,23 +224,38 @@ class AtvPage3 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: const [
-                          Text("They "),
+                        children: [                            
+                          const Text("They "),
                           SizedBox(
                             width: 90,
                             child: TextField(
+                              controller: _campoResposta[0],
+                            
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO LIKE",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" to watch horror movies"),
+                          const Text(" to watch horror movies"),
                         ],
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: (){
+                          confirmar();
+                          Navigator.of(context).pushNamed('/lista');
+                        }, 
+                        child: const Text('Confirmar'),
+                      ),
+                    ),
                   ),
                 ],
               ),

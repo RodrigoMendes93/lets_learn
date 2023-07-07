@@ -9,10 +9,12 @@ import 'package:flutter_application_1/atividades/atv6.dart';
 import 'package:flutter_application_1/atividades/atv7.dart';
 import 'package:flutter_application_1/atividades/atv8.dart';
 import 'package:flutter_application_1/atividades/atv9.dart';
+import 'package:flutter_application_1/lista.dart';
 import 'package:flutter_application_1/main.dart';
 
 class RoutesGenerator {
   static const homePage = '/';
+  static const lista = '/lista';
   static const atv1 = '/atividades/atv1';
   static const atv2 = '/atividades/atv2';
   static const atv3 = '/atividades/atv3';
@@ -30,26 +32,28 @@ class RoutesGenerator {
     switch (settings.name) {
       case homePage:
         return _goPage(const LoginPage());
+      case lista:
+        return _goPage(const ListaAtividades(title: 'Lista'));
       case atv1:
-        return _goPage(const AtvPage1());
+        return _goPage(AtvPage1());
       case atv2:
-        return _goPage(const AtvPage2());
+        return _goPage(AtvPage2());
       case atv3:
-        return _goPage(const AtvPage3());
+        return _goPage(AtvPage3());
       case atv4:
-        return _goPage(const AtvPage4());
+        return _goPage(AtvPage4());
       case atv5:
-        return _goPage(const AtvPage5());
+        return _goPage(AtvPage5());
       case atv6:
-        return _goPage(const AtvPage6());
+        return _goPage(AtvPage6());
       case atv7:
-        return _goPage(const AtvPage7());
+        return _goPage(AtvPage7());
       case atv8:
-        return _goPage(const AtvPage8());
+        return _goPage(AtvPage8());
       case atv9:
-        return _goPage(const AtvPage9());
+        return _goPage(AtvPage9());
       case atv10:
-        return _goPage(const AtvPage10());
+        return _goPage(AtvPage10());
       default:
         throw const FormatException('');
     }
