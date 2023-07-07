@@ -186,9 +186,6 @@ class AtvPage1 extends StatelessWidget {
                             child: TextField(
                               controller: _campoResposta[0],
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                           ),
@@ -209,9 +206,6 @@ class AtvPage1 extends StatelessWidget {
                             child: TextField(
                               controller: _campoResposta[1],
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),
@@ -232,9 +226,6 @@ class AtvPage1 extends StatelessWidget {
                             child: TextField(
                               controller: _campoResposta[2],
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),
@@ -255,9 +246,6 @@ class AtvPage1 extends StatelessWidget {
                             child: TextField(
                               controller: _campoResposta[2],
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),

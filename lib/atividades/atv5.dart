@@ -142,20 +142,17 @@ class AtvPage5 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("Monica lives in "),
+                          const Text("Monica lives in "),
                           SizedBox(
                             width: 80,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" old house"),
+                          const Text(" old house"),
                         ],
                       ),
                     ],
@@ -166,20 +163,17 @@ class AtvPage5 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("Steve is "),
+                          const Text("Steve is "),
                           SizedBox(
                             width: 115,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" best player in the team"),
+                          const Text(" best player in the team"),
                         ],
                       ),
                     ],
@@ -190,20 +184,17 @@ class AtvPage5 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("I need to buy "),
+                          const Text("I need to buy "),
                           SizedBox(
                             width: 100,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" new phone"),
+                          const Text(" new phone"),
                         ],
                       ),
                     ],

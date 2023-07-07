@@ -138,8 +138,11 @@ class AtvPage10 extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
                       Row(
-                        children: [                            
-                          const Text("He "),
+                        children: [               
+                          const SizedBox(
+                            width: 35,
+                            child: Text("He "),
+                          ),
                           SizedBox(
                             width: 115,
                             child: TextField(
@@ -164,7 +167,10 @@ class AtvPage10 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children:[                            
-                          const Text("We "),
+                          const SizedBox(
+                            width: 35,
+                            child: Text("We "),
+                          ),
                           SizedBox(
                             width: 105,
                             child: TextField(
@@ -189,7 +195,10 @@ class AtvPage10 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          const Text("You "),
+                          const SizedBox(
+                            width: 35,
+                            child: Text("You "),
+                          ),
                           SizedBox(
                             width: 165,
                             child: TextField(

@@ -186,9 +186,6 @@ class AtvPage2 extends StatelessWidget {
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),
@@ -210,9 +207,6 @@ class AtvPage2 extends StatelessWidget {
                               controller: _campoResposta[1],
                             
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),
@@ -234,9 +228,6 @@ class AtvPage2 extends StatelessWidget {
                               controller: _campoResposta[2],
                             
                               textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                              ),
                               style: const TextStyle(fontSize: 17),
                             ),
                             ),

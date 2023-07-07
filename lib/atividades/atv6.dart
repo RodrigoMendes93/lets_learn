@@ -142,21 +142,21 @@ class AtvPage6 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("He "),
+                          const Text("He "),
                           SizedBox(
                             width: 115,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO TRAVEL",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" to the USA on holidays"),
+                          const Text(" to the USA on holidays"),
                         ],
                       ),
                     ],
@@ -167,21 +167,21 @@ class AtvPage6 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("She "),
+                          const Text("She "),
                           SizedBox(
                             width: 110,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO WORK",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" at a restaurant"),
+                          const Text(" at a restaurant"),
                         ],
                       ),
                     ],
@@ -192,21 +192,21 @@ class AtvPage6 extends StatelessWidget {
                     children: <Widget>[
                       Row(
                         children: [                            
-                          Text("It "),
+                          const Text("It "),
                           SizedBox(
                             width: 98,
                             child: TextField(
                               controller: _campoResposta[0],
                             
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: "TO PLAY",
                               ),
-                              style: TextStyle(fontSize: 17),
+                              style: const TextStyle(fontSize: 17),
                             ),
                             ),
-                          Text(" with the toy"),
+                          const Text(" with the toy"),
                         ],
                       ),
                     ],
